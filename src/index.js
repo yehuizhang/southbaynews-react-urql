@@ -4,7 +4,22 @@ import "./styles/index.css";
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+import { Provider, Client, dedupExchange, fetchExchange } from "urql";
+import { cacheExchange } from "@urql/exchange-graphcache";
+
+const cache = cacheExchange({});
+
+const client = new Client({
+  url: "http://localhost:4000",
+  exchanges: [dedupExchange, cache, fetchExchange]
+});
+
+ReactDOM.render(
+  <Provider value={client}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
