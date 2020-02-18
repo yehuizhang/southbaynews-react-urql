@@ -20,7 +20,6 @@ var models = [
 exports.Prisma = prisma_lib_1.makePrismaClientClass({
   typeDefs,
   models,
-  endpoint: ``,
-  secret: `mysecret123`
+  endpoint: `https://us1.prisma.sh/kyle-zhang-eb5716/hackernews-react-urql/dev`
 });
 exports.prisma = new exports.Prisma();

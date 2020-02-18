@@ -82,8 +82,6 @@ enum LinkOrderByInput {
   description_DESC
   url_ASC
   url_DESC
-  updatedAt_ASC	
-  updatedAt_DESC
 }
 
 type LinkPreviousValues {
@@ -422,10 +420,6 @@ enum UserOrderByInput {
   email_DESC
   password_ASC
   password_DESC
-  createdAt_ASC	
-  createdAt_DESC	
-  updatedAt_ASC	
-  updatedAt_DESC
 }
 
 type UserPreviousValues {
@@ -626,10 +620,6 @@ type VoteEdge {
 enum VoteOrderByInput {
   id_ASC
   id_DESC
-  createdAt_ASC	
-  createdAt_DESC	
-  updatedAt_ASC	
-  updatedAt_DESC
 }
 
 type VotePreviousValues {
