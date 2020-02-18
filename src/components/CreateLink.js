@@ -23,13 +23,15 @@ const POST_MUTATION = gql`
   }
 `;
 
-const CreateLink = () => {
+const CreateLink = props => {
   const [description, setDescription] = useState("");
   const [url, setUrl] = useState("");
   const [state, executeMutation] = useMutation(POST_MUTATION);
 
   const submit = useCallback(() => {
-    executeMutation({ url, description });
+    executeMutation({ url, description }).then(() => {
+      props.history.push("/");
+    });
   }, [executeMutation, url, description]);
 
   return (
