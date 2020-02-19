@@ -32,7 +32,7 @@ const CreateLink = props => {
     executeMutation({ url, description }).then(() => {
       props.history.push("/");
     });
-  }, [executeMutation, url, description]);
+  }, [executeMutation, url, description, props.history]);
 
   return (
     <div>
