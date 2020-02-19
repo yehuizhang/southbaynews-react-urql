@@ -11,6 +11,10 @@ const Header = props => {
       <div className="flex flex-fixed black">
         <div className="fw7 mr1">南湾 News</div>
         <Link to="/" className="ml1 no-underline black">
+          Fresh
+        </Link>
+        <div className="ml1">|</div>
+        <Link to="/top" className="ml1 no-underline black">
           HOT
         </Link>
         <div className="ml1">|</div>
