@@ -1,22 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./styles/index.css";
-import App from "./components/App";
-import * as serviceWorker from "./serviceWorker";
+
+import { BrowserRouter } from "react-router-dom";
+import { SubscriptionClient } from "subscriptions-transport-ws";
 
 import {
   Provider,
-  Client,
-  dedupExchange,
+  createClient,
   fetchExchange,
+  dedupExchange,
   subscriptionExchange
 } from "urql";
-import { SubscriptionClient } from "subscription-transport-ws";
-import { cacheExchange } from "@urql/exchange-graphcache";
-import { BrowserRouter } from "react-router-dom";
-import { getToken } from "./token";
 
+import { cacheExchange } from "@urql/exchange-graphcache";
+
+import "./styles/index.css";
+
+import App from "./components/App";
 import { FEED_QUERY } from "./components/LinkList";
+import { getToken } from "./token";
 
 const cache = cacheExchange({
   updates: {
@@ -58,7 +60,7 @@ const subscriptionClient = new SubscriptionClient("ws://localhost:4000", {
   }
 });
 
-const client = new Client({
+const client = createClient({
   url: "http://localhost:4000",
   fetchOptions: () => {
     const token = getToken();
@@ -84,8 +86,3 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById("root")
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
